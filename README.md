@@ -1,6 +1,6 @@
 # C Projects Repository
 
-This repository contains three C projects. Each project is a separate program with its own functionality.
+This repository contains three C projects. Each of the projects is a separate program with its own functionality.
 
 ## Files
 

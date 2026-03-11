@@ -4,9 +4,6 @@
 #include <time.h>
 
 
-// =================================
-// Device Structure with Union
-// =================================
 struct Device {
     char name[30];
     int type;
@@ -19,17 +16,11 @@ struct Device {
 };
 
 
-// =================================
-// Callback Processing Function
-// =================================
 void process_device(struct Device *device, void (*callback)(struct Device*)) {
     callback(device);
 }
 
 
-// =================================
-// Monitoring Functions (Callbacks)
-// =================================
 
 void temperature_monitor(struct Device *device) {
     printf("Device: %s | Temperature: %.2f °C\n",
@@ -49,10 +40,6 @@ void battery_monitor(struct Device *device) {
 }
 
 
-// =================================
-// Custom Callback Function
-// Example: Device Status Check
-// =================================
 
 void device_status(struct Device *device) {
 
@@ -67,9 +54,6 @@ void device_status(struct Device *device) {
 }
 
 
-// =================================
-// MAIN PROGRAM
-// =================================
 
 int main() {
 
@@ -77,7 +61,6 @@ int main() {
 
     int device_count = 10;
 
-    // Dynamic memory allocation
     struct Device *devices = malloc(device_count * sizeof(struct Device));
 
     if (devices == NULL) {
@@ -86,9 +69,6 @@ int main() {
     }
 
 
-    // =================================
-    // Simulate Device Data
-    // =================================
 
     for (int i = 0; i < device_count; i++) {
 
@@ -114,9 +94,6 @@ int main() {
     printf("\n=== Device Monitoring Simulation ===\n\n");
 
 
-    // =================================
-    // Pointer Traversal Through Devices
-    // =================================
 
     struct Device *ptr = devices;
 
@@ -134,16 +111,12 @@ int main() {
             process_device(ptr, battery_monitor);
         }
 
-        // run custom callback
         process_device(ptr, device_status);
 
         ptr++;
     }
 
 
-    // =================================
-    // Free Memory
-    // =================================
 
     free(devices);
 

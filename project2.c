@@ -4,27 +4,20 @@
 
 #define MAX_WORD_LEN 40
 
-// ===============================
-// Required Structure
-// ===============================
+
 typedef struct {
     char name[MAX_WORD_LEN];
     int count;
 } wordStat;
 
 
-// ===============================
-// Function Prototypes
-// ===============================
+
 void count_words(char **words, int word_count);
 void longest_word(char **words, int word_count);
 void most_frequent(wordStat *stats, int stat_count);
 void average_word_length(char **words, int word_count); // custom analysis
 
 
-// ===============================
-// MAIN PROGRAM
-// ===============================
 int main() {
 
     char *text = NULL;
@@ -32,15 +25,11 @@ int main() {
 
     printf("Enter a paragraph:\n");
 
-    // dynamic input
     getline(&text, &size, stdin);
 
     printf("\nText stored at memory address: %p\n", (void*)text);
 
 
-    // ===============================
-    // Split text into words
-    // ===============================
 
     char **words = NULL;
     int word_count = 0;
@@ -64,9 +53,6 @@ int main() {
 
 
 
-    // ===============================
-    // Build Word Statistics
-    // ===============================
 
     wordStat *stats = NULL;
     int stat_count = 0;
@@ -101,9 +87,6 @@ int main() {
 
 
 
-    // ===============================
-    // Function Pointer Table
-    // ===============================
 
     void (*analysis_functions[4])();
 
@@ -114,9 +97,6 @@ int main() {
 
 
 
-    // ===============================
-    // Run Analyses
-    // ===============================
 
     printf("\n--- Analysis Results ---\n");
 
@@ -127,9 +107,6 @@ int main() {
 
 
 
-    // ===============================
-    // Free Memory
-    // ===============================
 
     for (int i = 0; i < word_count; i++) {
         free(words[i]);
@@ -144,9 +121,6 @@ int main() {
 
 
 
-// ===============================
-// Count Words
-// ===============================
 void count_words(char **words, int word_count) {
 
     printf("Total number of words: %d\n", word_count);
@@ -155,9 +129,6 @@ void count_words(char **words, int word_count) {
 
 
 
-// ===============================
-// Longest Word
-// ===============================
 void longest_word(char **words, int word_count) {
 
     char *longest = words[0];
@@ -176,9 +147,6 @@ void longest_word(char **words, int word_count) {
 
 
 
-// ===============================
-// Most Frequent Word
-// ===============================
 void most_frequent(wordStat *stats, int stat_count) {
 
     wordStat *max = &stats[0];
@@ -197,9 +165,6 @@ void most_frequent(wordStat *stats, int stat_count) {
 
 
 
-// ===============================
-// Custom Analysis: Average Word Length
-// ===============================
 void average_word_length(char **words, int word_count) {
 
     int total = 0;
